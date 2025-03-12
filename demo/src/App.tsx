@@ -1,24 +1,19 @@
 import { ComponentType } from 'react'
-import {
-  createBrowserRouter,
-  Link,
-  RouteObject,
-  RouterProvider,
-} from 'react-router-dom'
+import { createBrowserRouter, Link, RouteObject, RouterProvider } from 'react-router-dom'
 
+import ControlledScrolling from './demo-controlled-scrolling'
+import ControledSelect from './demo-controlled-select'
+import CustomInfoLabel from './demo-custom-info-label'
+import CustomItems from './demo-custom-items'
+import ElementResize from './demo-element-resize'
+import ExternalDrop from './demo-external'
+import CustomHeaders from './demo-headers'
+import LinkedTimelines from './demo-linked-timelines'
 import DemoMain from './demo-main'
 import DemoPerformance from './demo-performance'
-import DemoTreePGroups from './demo-tree-groups'
-import LinkedTimelines from './demo-linked-timelines'
-import ElementResize from './demo-element-resize'
 import Renderers from './demo-renderers'
+import DemoTreePGroups from './demo-tree-groups'
 import VerticalClasses from './demo-vertical-classes'
-import CustomItems from './demo-custom-items'
-import CustomHeaders from './demo-headers'
-import CustomInfoLabel from './demo-custom-info-label'
-import ControledSelect from './demo-controlled-select'
-import ControlledScrolling from './demo-controlled-scrolling'
-import ExternalDrop from "./demo-external"
 const loader = () => 'loading'
 const routes: RouteObject[] = [
   {
@@ -72,9 +67,9 @@ const routes: RouteObject[] = [
     Component: withLayout(ControlledScrolling),
   },
   {
-    path: "/ExternalDrop",
+    path: '/ExternalDrop',
     Component: withLayout(ExternalDrop),
-  }
+  },
 ]
 
 function Menu() {

@@ -1,11 +1,11 @@
-import React, { CSSProperties, ReactNode } from 'react'
-import { useTimelineHeadersContext } from './HeadersContext'
-import { useTimelineState } from '../timeline/TimelineStateContext'
-import { iterateTimes } from '../utility/calendar'
-import { Interval, TimelineTimeSteps } from '../types/main'
 import { Dayjs } from 'dayjs'
-import { CustomDateHeaderProps } from './CustomDateHeader'
 import isEqual from 'lodash/isEqual'
+import React, { CSSProperties, ReactNode } from 'react'
+import { useTimelineState } from '../timeline/TimelineStateContext'
+import { Interval, TimelineTimeSteps } from '../types/main'
+import { iterateTimes } from '../utility/calendar'
+import { CustomDateHeaderProps } from './CustomDateHeader'
+import { useTimelineHeadersContext } from './HeadersContext'
 import { GetIntervalPropsType } from './types'
 
 export type CustomHeaderProps<Data> = {

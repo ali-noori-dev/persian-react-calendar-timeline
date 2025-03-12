@@ -1,12 +1,13 @@
-import React, { CSSProperties, ReactNode } from 'react'
-import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
-import CustomHeader from './CustomHeader'
-import { getNextUnit, SelectUnits } from '../utility/calendar'
-import { defaultHeaderFormats } from '../default-config'
-import memoize from 'memoize-one'
-import { CustomDateHeader } from './CustomDateHeader'
-import { IntervalRenderer, SidebarHeaderChildrenFnProps, TimelineTimeSteps } from '../types/main'
 import { Dayjs, UnitType } from 'dayjs'
+import moment from 'jalali-moment'
+import memoize from 'memoize-one'
+import React, { CSSProperties, ReactNode } from 'react'
+import { defaultHeaderFormats } from '../default-config'
+import { TimelineStateConsumer } from '../timeline/TimelineStateContext'
+import { IntervalRenderer, SidebarHeaderChildrenFnProps, TimelineTimeSteps } from '../types/main'
+import { getNextUnit, SelectUnits } from '../utility/calendar'
+import { CustomDateHeader } from './CustomDateHeader'
+import CustomHeader from './CustomHeader'
 
 type GetHeaderData<Data> = (
   intervalRenderer: (p: IntervalRenderer<Data>) => ReactNode,
@@ -28,10 +29,7 @@ export interface DateHeaderProps<Data> {
   className?: string | undefined
   unit?: keyof TimelineTimeSteps | 'primaryHeader' | undefined
   timelineUnit: SelectUnits
-  labelFormat?:
-    | string
-    | FormatLabelFunction
-    | undefined
+  labelFormat?: string | FormatLabelFunction | undefined
   intervalRenderer?: (props: IntervalRenderer<Data>) => ReactNode
   headerData?: Data | undefined
   children?: ((props: SidebarHeaderChildrenFnProps<Data>) => ReactNode) | undefined
@@ -144,15 +142,15 @@ type FormatLabelFunction = (
   timeRange: [Dayjs, Dayjs],
   unit: keyof typeof defaultHeaderFormats,
   labelWidth?: number,
-  formatOptions?: typeof defaultHeaderFormats
-) => string;
+  formatOptions?: typeof defaultHeaderFormats,
+) => string
 
-const formatLabel:FormatLabelFunction = (
+const formatLabel: FormatLabelFunction = (
   [timeStart],
   unit,
-  labelWidth =150,
+  labelWidth = 150,
   formatOptions = defaultHeaderFormats,
-) =>{
+) => {
   let format
   if (labelWidth >= 150) {
     format = formatOptions[unit]['long']
@@ -163,7 +161,7 @@ const formatLabel:FormatLabelFunction = (
   } else {
     format = formatOptions[unit]['short']
   }
-  return timeStart.format(format)
+  return moment(timeStart.toDate()).locale('fa').format(format)
 }
 
 export default DateHeader

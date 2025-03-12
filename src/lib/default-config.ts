@@ -26,34 +26,35 @@ type UnitValue = {
   medium: string
   short: string
 }
+
 export const defaultHeaderFormats: Record<string, UnitValue> = {
   year: {
-    long: 'YYYY',
-    mediumLong: 'YYYY',
-    medium: 'YYYY',
-    short: 'YY',
+    long: 'jYYYY',
+    mediumLong: 'jYYYY',
+    medium: 'jYYYY',
+    short: 'jYY',
   },
   month: {
-    long: 'MMMM YYYY',
-    mediumLong: 'MMMM',
-    medium: 'MMMM',
-    short: 'MM/YY',
+    long: 'jMMMM jYYYY',
+    mediumLong: 'jMMMM',
+    medium: 'jMMMM',
+    short: 'jMM/jYY',
   },
   week: {
-    long: 'w',
-    mediumLong: 'w',
-    medium: 'w',
-    short: 'w',
+    long: 'jW',
+    mediumLong: 'jW',
+    medium: 'jW',
+    short: 'jW',
   },
   day: {
-    long: 'dddd, LL',
-    mediumLong: 'dddd, LL',
-    medium: 'dd D',
-    short: 'D',
+    long: 'dddd, jD jMMMM jYYYY',
+    mediumLong: 'dddd, jD jMMMM',
+    medium: 'jD jMMMM',
+    short: 'jD',
   },
   hour: {
-    long: 'dddd, LL, HH:00',
-    mediumLong: 'L, HH:00',
+    long: 'dddd, jD jMMMM, HH:00',
+    mediumLong: 'jL, HH:00',
     medium: 'HH:00',
     short: 'HH',
   },
