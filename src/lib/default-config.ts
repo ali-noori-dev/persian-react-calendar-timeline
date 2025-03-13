@@ -38,7 +38,7 @@ export const defaultHeaderFormats: Record<string, UnitValue> = {
     long: 'jMMMM jYYYY',
     mediumLong: 'jMMMM',
     medium: 'jMMMM',
-    short: 'jMM/jYY',
+    short: 'jMM',
   },
   week: {
     long: 'jW',
