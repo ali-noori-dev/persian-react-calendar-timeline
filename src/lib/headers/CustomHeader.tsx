@@ -1,4 +1,4 @@
-import { Dayjs } from 'dayjs'
+import moment from 'jalali-moment'
 import isEqual from 'lodash/isEqual'
 import React, { CSSProperties, ReactNode } from 'react'
 import { useTimelineState } from '../timeline/TimelineStateContext'
@@ -17,7 +17,7 @@ export type CustomHeaderProps<Data> = {
   canvasTimeStart: number
   canvasTimeEnd: number
   canvasWidth: number
-  showPeriod: (start: Dayjs, end: Dayjs) => void
+  showPeriod: (start: moment.Moment, end: moment.Moment) => void
   headerData?: Data
   getLeftOffsetFromDate: (date: any) => number
   height: number

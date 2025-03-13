@@ -1,8 +1,8 @@
-import React, {HTMLProps} from 'react'
-import Interval from './Interval'
-import { Interval as IntervalType, IntervalRenderer } from '../types/main'
-import { Dayjs } from 'dayjs'
+import moment from 'jalali-moment'
+import React, { HTMLProps } from 'react'
+import { IntervalRenderer, Interval as IntervalType } from '../types/main'
 import { SelectUnits } from '../utility/calendar'
+import Interval from './Interval'
 import { GetIntervalPropsType } from './types'
 
 export interface CustomDateHeaderProps<Data> {
@@ -12,12 +12,12 @@ export interface CustomDateHeaderProps<Data> {
   }
   getRootProps: (props?: { style?: React.CSSProperties }) => HTMLProps<HTMLDivElement>
   getIntervalProps: GetIntervalPropsType
-  showPeriod: (start: Dayjs, end: Dayjs) => void
+  showPeriod: (start: moment.Moment, end: moment.Moment) => void
   data: {
     style: React.CSSProperties
     intervalRenderer: (props: IntervalRenderer<Data>) => React.ReactNode
     className?: string
-    getLabelFormat: (interval: [Dayjs, Dayjs], unit: string, labelWidth: number) => string
+    getLabelFormat: (interval: [moment.Moment, moment.Moment], unit: string, labelWidth: number) => string
     unitProp?: 'primaryHeader'
     headerData?: Data
   }

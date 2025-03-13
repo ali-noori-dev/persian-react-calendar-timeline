@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
-import dayjs, { Dayjs } from 'dayjs'
-import { _get } from './generic'
+import dayjs from 'dayjs'
+import moment from 'jalali-moment'
+import { ReactCalendarTimelineProps, ReactCalendarTimelineState } from '../Timeline'
 import { Dimension, ItemDimension } from '../types/dimension'
 import {
   GroupedItem,
@@ -12,7 +13,7 @@ import {
   TimelineKeys,
   TimelineTimeSteps,
 } from '../types/main'
-import { ReactCalendarTimelineProps, ReactCalendarTimelineState } from '../Timeline'
+import { _get } from './generic'
 
 /**
  * Calculate the ms / pixel ratio of the timeline state
@@ -73,9 +74,9 @@ export function iterateTimes(
   end: number,
   unit: keyof TimelineTimeSteps,
   timeSteps: TimelineTimeSteps,
-  callback: (time: Dayjs, nextTime: Dayjs) => void,
+  callback: (time: moment.Moment, nextTime: moment.Moment) => void,
 ) {
-  let time = dayjs(start).startOf(unit)
+  let time = moment(start).locale('fa').startOf(unit)
 
   if (timeSteps[unit] && timeSteps[unit] > 1) {
     const value = time.get(unit)
@@ -83,9 +84,9 @@ export function iterateTimes(
   }
 
   while (time.valueOf() < end) {
-    const nextTime = dayjs(time)
-      .add(timeSteps[unit] || 1, unit as dayjs.ManipulateType)
-      .startOf(unit)
+    const nextTime = moment(time)
+      .add(timeSteps[unit] || 1, unit as moment.unitOfTime.DurationConstructor)
+      .startOf(unit as moment.unitOfTime.StartOf)
 
     callback(time, nextTime)
     time = nextTime
@@ -673,7 +674,7 @@ export function getItemWithInteractions<
 export function getCanvasBoundariesFromVisibleTime(visibleTimeStart: number, visibleTimeEnd: number, buffer: number) {
   const zoom = visibleTimeEnd - visibleTimeStart
   // buffer - 1 (1 is visible area) divided by 2 (2 is the buffer split on the right and left of the timeline)
-  const canvasTimeStart = visibleTimeStart - zoom * (buffer - 1) / 2
+  const canvasTimeStart = visibleTimeStart - (zoom * (buffer - 1)) / 2
   const canvasTimeEnd = canvasTimeStart + zoom * buffer
   return [canvasTimeStart, canvasTimeEnd]
 }

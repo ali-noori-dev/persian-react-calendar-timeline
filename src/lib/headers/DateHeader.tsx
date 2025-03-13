@@ -81,21 +81,17 @@ class DateHeaderInner<Data> extends React.Component<DateHeaderProps<Data>> {
   render() {
     const unit = this.getHeaderUnit()
     const { height } = this.props
-    return (
-      <CustomHeader
-        children={CustomDateHeader}
-        unit={unit}
-        height={height}
-        headerData={this.getHeaderData(
-          this.props.intervalRenderer!,
-          this.getRootStyle(this.props.style),
-          this.props.className,
-          this.getLabelFormat,
-          this.props.unit,
-          this.props.headerData,
-        )}
-      />
+
+    const headerData = this.getHeaderData(
+      this.props.intervalRenderer!,
+      this.getRootStyle(this.props.style),
+      this.props.className,
+      this.getLabelFormat,
+      this.props.unit,
+      this.props.headerData,
     )
+
+    return <CustomHeader children={CustomDateHeader} unit={unit} height={height} headerData={headerData} />
   }
 }
 
@@ -138,6 +134,7 @@ export function DateHeader<Data>({
     </TimelineStateConsumer>
   )
 }
+
 type FormatLabelFunction = (
   timeRange: [Dayjs, Dayjs],
   unit: keyof typeof defaultHeaderFormats,

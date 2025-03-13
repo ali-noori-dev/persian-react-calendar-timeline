@@ -1,27 +1,22 @@
-import React, {Component, MouseEvent} from 'react'
-import {getSumOffset, getSumScroll} from './utility/dom-helpers'
-import Items, {CanResize} from './items/Items'
-import Sidebar from './layout/Sidebar'
-import Columns from './columns/Columns'
-import GroupRows, {RowClickEvent} from './row/GroupRows'
-import ScrollElement from './scroll/ScrollElement'
-import MarkerCanvas from './markers/MarkerCanvas'
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+import moment from 'jalali-moment'
+import React, { Component, MouseEvent } from 'react'
 import windowResizeDetector from '../resize-detector/window'
-import {
-  getMinUnit,
-  calculateTimeForXPosition,
-  calculateScrollCanvas,
-  getCanvasBoundariesFromVisibleTime,
-  getCanvasWidth,
-  stackTimelineItems, coordinateToTimeRatio,
-} from './utility/calendar'
-import {_get} from './utility/generic'
-import {defaultKeys, defaultTimeSteps} from './default-config'
-import {TimelineStateProvider} from './timeline/TimelineStateContext'
-import {TimelineMarkersProvider} from './markers/TimelineMarkersContext'
-import {TimelineHeadersProvider} from './headers/HeadersContext'
+import Columns from './columns/Columns'
+import { defaultKeys, defaultTimeSteps } from './default-config'
+import { DateHeader } from './headers/DateHeader'
+import { TimelineHeadersProvider } from './headers/HeadersContext'
 import TimelineHeaders from './headers/TimelineHeaders'
-import {DateHeader} from './headers/DateHeader'
+import { ItemProps, ResizeEdge } from './items/Item'
+import Items, { CanResize } from './items/Items'
+import Sidebar from './layout/Sidebar'
+import MarkerCanvas from './markers/MarkerCanvas'
+import { TimelineMarkersProvider } from './markers/TimelineMarkersContext'
+import GroupRows, { RowClickEvent } from './row/GroupRows'
+import ScrollElement from './scroll/ScrollElement'
+import { TimelineStateProvider } from './timeline/TimelineStateContext'
+import { ItemDimension } from './types/dimension'
 import {
   dateType,
   ElementWithSecret,
@@ -36,19 +31,25 @@ import {
   TimelineTimeSteps,
   Unit,
 } from './types/main'
-import { ItemDimension } from './types/dimension'
-import dayjs, { Dayjs } from 'dayjs'
-import { ItemProps, ResizeEdge } from './items/Item'
-// import './Timeline.scss'
-import localizedFormat from 'dayjs/plugin/localizedFormat'
+import {
+  calculateScrollCanvas,
+  calculateTimeForXPosition,
+  coordinateToTimeRatio,
+  getCanvasBoundariesFromVisibleTime,
+  getCanvasWidth,
+  getMinUnit,
+  stackTimelineItems,
+} from './utility/calendar'
+import { getSumOffset, getSumScroll } from './utility/dom-helpers'
+import { _get } from './utility/generic'
 
 dayjs.extend(localizedFormat)
 
 export interface ReactCalendarTimelineRef {
   // Add any methods or properties you want to expose
-  getBoundingClientRect(): DOMRect;
+  getBoundingClientRect(): DOMRect
 
-  calculateDropCoordinatesToTimeAndGroup(x: number, y: number): { time: number, groupIndex: number };
+  calculateDropCoordinatesToTimeAndGroup(x: number, y: number): { time: number; groupIndex: number }
 }
 
 export type OnTimeChange<CustomItem, CustomGroup> = (
@@ -532,7 +533,7 @@ export default class ReactCalendarTimeline<
     }
   }
 
-  showPeriod = (from: Dayjs, to: Dayjs) => {
+  showPeriod = (from: moment.Moment, to: moment.Moment) => {
     const visibleTimeStart = from.valueOf()
     const visibleTimeEnd = to.valueOf()
 
@@ -931,7 +932,7 @@ export default class ReactCalendarTimeline<
     return (
       <TimelineHeaders>
         <DateHeader unit="primaryHeader" />
-        <DateHeader />
+        <DateHeader /> {/* secondary header */}
       </TimelineHeaders>
     )
   }
@@ -966,10 +967,9 @@ export default class ReactCalendarTimeline<
     const offset = getSumOffset(this.scrollComponent!).offsetLeft
     const scrolls = getSumScroll(this.scrollComponent!)
 
-    const dragTime = (x - offset + scrolls.scrollLeft) * ratio + this.state.canvasTimeStart;
-    let groupDelta = 0;
+    const dragTime = (x - offset + scrolls.scrollLeft) * ratio + this.state.canvasTimeStart
+    let groupDelta = 0
     for (const key of this.state.groupTops) {
-
       if (y > Number(key)) {
         groupDelta = this.state.groupTops.indexOf(key)
       } else {
@@ -977,15 +977,13 @@ export default class ReactCalendarTimeline<
       }
     }
 
-    if (!this.props.dragSnap) return {time: dragTime, groupIndex: groupDelta};
+    if (!this.props.dragSnap) return { time: dragTime, groupIndex: groupDelta }
 
-    const consideredOffset = dayjs().utcOffset() * 60 * 1000;
+    const consideredOffset = dayjs().utcOffset() * 60 * 1000
     return {
-      time: Math.round(dragTime / this.props.dragSnap) * this.props.dragSnap - (consideredOffset % this.props.dragSnap)
-      , groupIndex: groupDelta
+      time: Math.round(dragTime / this.props.dragSnap) * this.props.dragSnap - (consideredOffset % this.props.dragSnap),
+      groupIndex: groupDelta,
     }
-
-
   }
 
   render() {

@@ -1,8 +1,9 @@
 import { Dayjs } from 'dayjs'
-import { ReactNode, CSSProperties, HTMLProps, MouseEventHandler, Ref, Component, ReactElement } from 'react'
-import { Dimension, ItemDimension } from './dimension'
+import moment from 'jalali-moment'
+import { Component, CSSProperties, HTMLProps, MouseEventHandler, ReactElement, ReactNode, Ref } from 'react'
 import { ResizeEdge } from '../items/Item'
 import { SelectUnits } from '../utility/calendar'
+import { Dimension, ItemDimension } from './dimension'
 
 export type Id = number | string
 
@@ -202,8 +203,8 @@ export interface IntervalRenderer<Data> {
 }
 
 export interface Interval {
-  startTime: Dayjs
-  endTime: Dayjs
+  startTime: moment.Moment
+  endTime: moment.Moment
   labelWidth: number
   left: number
 }
