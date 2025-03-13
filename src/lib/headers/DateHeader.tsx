@@ -153,7 +153,7 @@ const formatLabel: FormatLabelFunction = (
     format = formatOptions[unit]['long']
   } else if (labelWidth >= 100) {
     format = formatOptions[unit]['mediumLong']
-  } else if (labelWidth >= 50) {
+  } else if (labelWidth >= 60) {
     format = formatOptions[unit]['medium']
   } else {
     format = formatOptions[unit]['short']
