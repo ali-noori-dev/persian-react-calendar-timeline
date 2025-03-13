@@ -21,8 +21,8 @@ export default class App extends Component {
     super(props)
 
     const { groups, items } = generateFakeData()
-    const defaultTimeStart = dayjs().startOf('month').toDate()
-    const defaultTimeEnd = dayjs().startOf('month').add(1, 'month').toDate()
+    const defaultTimeStart = dayjs().startOf('day').toDate()
+    const defaultTimeEnd = dayjs().startOf('day').add(1, 'day').toDate()
 
     // convert every 2 groups out of 3 to nodes, leaving the first as the root
     const newGroups = groups.map((group) => {

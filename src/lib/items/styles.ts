@@ -2,23 +2,23 @@ export const overridableStyles = {
   fontSize: 12,
   color: 'white',
   cursor: 'pointer',
-  background: '#2196f3',
-  borderTopWidth:"1px",
-  borderBottomWidth:"1px",
-  borderLeftWidth:"1px",
-  borderRightWidth:"1px",
-  borderStyle:"solid",
-  borderColor:"#1a6fb3",
+  background: '#00c7ac',
+  borderTopWidth: '1px',
+  borderBottomWidth: '1px',
+  borderLeftWidth: '1px',
+  borderRightWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#008f7c',
   zIndex: 80,
 }
 export const selectedStyle = {
   background: '#ffc107',
-  borderTopWidth:"1px",
-  borderLeftWidth:"1px",
-  borderRightWidth:"1px",
-  borderBottomWidth:"1px",
-  borderStyle:"solid",
-  borderColor:"#ff9800",
+  borderTopWidth: '1px',
+  borderLeftWidth: '1px',
+  borderRightWidth: '1px',
+  borderBottomWidth: '1px',
+  borderStyle: 'solid',
+  borderColor: '#ff9800',
   zIndex: 82,
 }
 export const selectedAndCanMove = {
@@ -32,7 +32,7 @@ export const selectedAndCanResizeLeftAndDragLeft = {
   cursor: 'w-resize',
 }
 export const selectedAndCanResizeRight = {
-  borderRightWidth: "3px",
+  borderRightWidth: '3px',
 }
 export const selectedAndCanResizeRightAndDragRight = {
   cursor: 'e-resize',

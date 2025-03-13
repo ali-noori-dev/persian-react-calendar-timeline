@@ -1,6 +1,6 @@
 $item-color: white !default;
-$item-background: #2196f3 !default;
-$item-border: 1px solid #1a6fb3 !default;
+$item-background: #00c7ac !default;
+$item-border: 1px solid #008f7c !default;
 $item-selected-color: white !default;
 $item-selected-background: #ffc107 !default;
 $item-selected-border: 1px solid #ff9800 !default;
@@ -12,7 +12,7 @@ $border-color: #bbb !default;
 $border-width: 1px;
 $thick-border-width: 2px;
 $sidebar-color: #ffffff !default;
-$sidebar-background-color: #c52020 !default;
+$sidebar-background-color: #1e73bd !default;
 $list-item-padding: 0 4px;
 $weekend: rgba(250, 246, 225, 0.5) !default;
 
@@ -41,8 +41,6 @@ $date-header-color: #fff !default;
   }
 
   .rct-item {
-
-
     &:hover {
       z-index: 88;
     }
@@ -135,7 +133,6 @@ $date-header-color: #fff !default;
     z-index: 51;
   }
 
-
   .rct-dateHeader {
     display: flex;
     align-items: center;
@@ -145,12 +142,12 @@ $date-header-color: #fff !default;
     cursor: pointer;
     font-size: 14px;
     background-color: $date-header-background;
-    border-left:  2px solid $border-color;
+    border-left: 2px solid $border-color;
   }
 
   .rct-dateHeader-primary {
     background-color: initial;
-    border-left:  1px solid $border-color;
+    border-left: 1px solid $border-color;
     border-right: 1px solid $border-color;
     color: $date-header-color;
   }
@@ -162,6 +159,6 @@ $date-header-color: #fff !default;
   }
 
   .rct-calendar-header {
-    border: 1px solid $border-color
+    border: 1px solid $border-color;
   }
 }
