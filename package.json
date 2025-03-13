@@ -1,7 +1,7 @@
 {
   "name": "persian-react-calendar-timeline",
   "version": "1.0.0",
-  "description": "persian-react-calendar-timeline",
+  "description": "A customizable Persian (Jalali) calendar timeline component for React, designed to visualize events, schedules, and project timelines with Jalali date support.",
   "packageManager": "npm@10.1.0",
   "scripts": {
     "build": "npm run clean && tsc && vite build",
