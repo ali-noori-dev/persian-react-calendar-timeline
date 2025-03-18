@@ -22,19 +22,7 @@ We're excited to announce the beta release of v0.30.0 which includes:
 - Updated dependencies to latest versions
 - React 18+ support
 
-The beta version is available via:
-
-```bash
-npm install react-calendar-timeline@beta
-```
-
-We encourage users to try out the beta and provide feedback before the stable release. Please report any issues on GitHub.
-
 Note: Testing framework has been updated and some tests are currently being migrated.
-
-# ⚠️⚠️⚠️⚠️ HELP WANTED
-
-please email me [ali.noori.dev@gmail.com](mailto:ali.noori.dev@gmail.com) and we will setup some time to speak and see if you can help maintain this library.
 
 ![calendar demo](https://raw.githubusercontent.com/namespace-ee/react-calendar-timeline/master/demo.gif)
 
@@ -54,22 +42,22 @@ Checkout the [examples here](https://github.com/namespace-ee/react-calendar-time
 
 ```bash
 # via yarn
-yarn add react-calendar-timeline
+yarn add persian-react-calendar-timeline
 
 # via npm
-npm install --save react-calendar-timeline
+npm install --save persian-react-calendar-timeline
 ```
 
-`react-calendar-timeline` has [react](https://reactjs.org/), [react-dom](https://reactjs.org/docs/react-dom.html), [`moment`](http://momentjs.com/) and [`interactjs`](http://interactjs.io/docs/) as peer dependencies.
+`persian-react-calendar-timeline` has [react](https://reactjs.org/), [react-dom](https://reactjs.org/docs/react-dom.html), [`moment`](http://momentjs.com/) and [`interactjs`](http://interactjs.io/docs/) as peer dependencies.
 
 # Usage
 
 At the very minimum:
 
 ```jsx
-import Timeline from 'react-calendar-timeline'
+import Timeline from 'persian-react-calendar-timeline'
 // make sure you include the timeline stylesheet or the timeline will not be styled
-import 'react-calendar-timeline/lib/Timeline.css'
+import 'persian-react-calendar-timeline/lib/Timeline.css'
 import moment from 'moment'
 
 const groups = [
@@ -584,7 +572,7 @@ The component automatically detects when the window has been resized. Optionally
 To do this, pass a `resizeDetector`. Since bundling it by default would add ~18kb of minimized JS, you need to opt in to this like so:
 
 ```jsx
-import containerResizeDetector from 'react-calendar-timeline/lib/resize-detector/container'
+import containerResizeDetector from 'persian-react-calendar-timeline/lib/resize-detector/container'
 
 <Timeline resizeDetector={containerResizeDetector} ... />
 ```
@@ -627,8 +615,7 @@ Timeline markers are markers that are overlayed on the canvas at specific datepo
 Markers can be placed in the Timeline by declaring them as `children` of the `Timeline` component:
 
 ```jsx
-import Timeline, { TimelineMarkers, CustomMarker, TodayMarker, CursorMarker } from 'react-calendar-timeline'
-
+import Timeline, { TimelineMarkers, CustomMarker, TodayMarker, CursorMarker } from 'persian-react-calendar-timeline'
 ;<Timeline>
   <TimelineMarkers>
     <TodayMarker />
@@ -768,7 +755,7 @@ import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader
-} from 'react-calendar-timeline'
+} from 'persian-react-calendar-timeline'
 
 <Timeline>
   <TimelineHeaders>
@@ -841,7 +828,7 @@ import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader
-} from 'react-calendar-timeline'
+} from 'persian-react-calendar-timeline'
 
 <Timeline>
   <TimelineHeaders>
@@ -1010,8 +997,7 @@ data passed through headerData
 #### example
 
 ```jsx
-import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'react-calendar-timeline'
-
+import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'persian-react-calendar-timeline'
 ;<Timeline>
   <TimelineHeaders>
     <SidebarHeader>
@@ -1141,8 +1127,7 @@ pass through the `headerData` prop content
 #### example
 
 ```jsx
-import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'react-calendar-timeline'
-
+import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'persian-react-calendar-timeline'
 ;<Timeline>
   <TimelineHeaders>
     <SidebarHeader>
@@ -1236,8 +1221,8 @@ See [issue 51](https://github.com/namespace-ee/react-calendar-timeline/issues/51
 Alternatively you may import the transpiled version of the timeline like this:
 
 ```js
-// import Timeline from 'react-calendar-timeline'  // ESnext version
-import Timeline from 'react-calendar-timeline/lib' // ES5 version
+// import Timeline from 'persian-react-calendar-timeline'  // ESnext version
+import Timeline from 'persian-react-calendar-timeline/lib' // ES5 version
 ```
 
 However doing so you lose on some of the features of webpack 2 and will potentially get a slightly larger bundle.
@@ -1287,7 +1272,7 @@ If you like to improve React Calendar Timeline fork the repo and get started by 
 
 ```bash
 $ git clone https://github.com/ali-noori-dev/persian-react-calendar-timeline.git persian-react-calendar-timeline
-$ cd react-calendar-timeline
+$ cd persian-react-calendar-timeline
 $ yarn
 $ yarn start
 ```
